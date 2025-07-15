@@ -1,9 +1,66 @@
 import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+import jsPDF from "jspdf";
+import html2canvas from "html2canvas";
 import Card from "@/components/atoms/Card";
 import Button from "@/components/atoms/Button";
 import ApperIcon from "@/components/ApperIcon";
 
+const generatePDF = async (element, filename) => {
+  try {
+    const canvas = await html2canvas(element, {
+      scale: 2,
+      useCORS: true,
+      allowTaint: true,
+      backgroundColor: '#ffffff',
+      width: element.scrollWidth,
+      height: element.scrollHeight
+    });
+
+    const imgData = canvas.toDataURL('image/png');
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const imgWidth = 210;
+    const pageHeight = 295;
+    const imgHeight = (canvas.height * imgWidth) / canvas.width;
+    let heightLeft = imgHeight;
+    let position = 0;
+
+    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+    heightLeft -= pageHeight;
+
+    while (heightLeft >= 0) {
+      position = heightLeft - imgHeight;
+      pdf.addPage();
+      pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+      heightLeft -= pageHeight;
+    }
+
+    pdf.save(filename);
+    return true;
+  } catch (error) {
+    console.error('PDF generation failed:', error);
+    return false;
+  }
+};
+
 const RecommendationReport = ({ recommendations, userProfile, onStartOver }) => {
+  const handleExportPDF = async () => {
+    const reportElement = document.getElementById('recommendation-report');
+    if (!reportElement) {
+      toast.error('Unable to generate PDF. Please try again.');
+      return;
+    }
+
+    toast.info('Generating PDF...');
+    
+    const success = await generatePDF(reportElement, 'nursing-licensure-recommendations.pdf');
+    
+    if (success) {
+      toast.success('PDF exported successfully!');
+    } else {
+      toast.error('Failed to export PDF. Please try again.');
+    }
+  };
   const container = {
     hidden: { opacity: 0 },
     show: {
@@ -28,8 +85,9 @@ const RecommendationReport = ({ recommendations, userProfile, onStartOver }) => 
     }
   };
 
-  return (
+return (
     <motion.div
+      id="recommendation-report"
       variants={container}
       initial="hidden"
       animate="show"
@@ -164,6 +222,17 @@ const RecommendationReport = ({ recommendations, userProfile, onStartOver }) => 
                 Contact Support
               </Button>
             </Card>
+          </motion.div>
+
+<motion.div variants={item}>
+            <Button 
+              onClick={handleExportPDF}
+              variant="outline" 
+              className="w-full mb-4"
+            >
+              <ApperIcon name="Download" className="w-4 h-4 mr-2" />
+              Export PDF
+            </Button>
           </motion.div>
 
           <motion.div variants={item}>
