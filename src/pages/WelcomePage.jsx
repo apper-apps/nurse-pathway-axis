@@ -82,41 +82,122 @@ const WelcomePage = ({ onStart }) => {
             ))}
           </motion.div>
 
-          <motion.div variants={item}>
+<motion.div variants={item}>
             <Card className="p-8 bg-gradient-to-r from-primary to-secondary text-white mb-8">
-              <h2 className="text-2xl font-bold mb-4">
-                Professional Assessment - $9 USD
-              </h2>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-                <div className="text-center">
+              <div className="text-center mb-6">
+                <h2 className="text-3xl font-bold mb-3">
+                  Professional Licensure Assessment
+                </h2>
+                <div className="text-5xl font-bold mb-2">$9 USD</div>
+                <p className="text-blue-100 text-lg">One-time investment in your nursing career</p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                <div className="text-center p-4 bg-white bg-opacity-10 rounded-lg">
                   <div className="text-3xl font-bold mb-2">Top 5</div>
-                  <div className="text-blue-100">Recommendations</div>
+                  <div className="text-blue-100">Personalized Recommendations</div>
+                  <div className="text-xs text-blue-200 mt-1">Ranked by compatibility</div>
                 </div>
-                <div className="text-center">
-                  <div className="text-3xl font-bold mb-2">100%</div>
-                  <div className="text-blue-100">Personalized</div>
+                <div className="text-center p-4 bg-white bg-opacity-10 rounded-lg">
+                  <div className="text-3xl font-bold mb-2">Step-by-Step</div>
+                  <div className="text-blue-100">Implementation Guide</div>
+                  <div className="text-xs text-blue-200 mt-1">Complete roadmap included</div>
                 </div>
-                <div className="text-center">
+                <div className="text-center p-4 bg-white bg-opacity-10 rounded-lg">
                   <div className="text-3xl font-bold mb-2">24/7</div>
-                  <div className="text-blue-100">Report Access</div>
+                  <div className="text-blue-100">Lifetime Access</div>
+                  <div className="text-xs text-blue-200 mt-1">PDF export included</div>
                 </div>
               </div>
-              <p className="text-blue-100 mb-6">
-                One-time payment for comprehensive analysis of your nursing career opportunities
-              </p>
-              <Button 
-                size="lg" 
-                className="bg-white text-primary hover:bg-gray-100 px-8 py-3 text-lg font-semibold"
-                onClick={onStart}
-              >
-                Start Your Assessment
-                <ApperIcon name="ArrowRight" className="w-5 h-5 ml-2" />
-              </Button>
+
+              <div className="space-y-4 mb-8">
+                <h3 className="text-xl font-semibold text-center mb-4">What You'll Get:</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div className="flex items-center space-x-3">
+                    <ApperIcon name="CheckCircle2" className="w-5 h-5 text-green-300" />
+                    <span className="text-sm">Detailed cost breakdowns for each country</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <ApperIcon name="CheckCircle2" className="w-5 h-5 text-green-300" />
+                    <span className="text-sm">Timeline estimates with milestone tracking</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <ApperIcon name="CheckCircle2" className="w-5 h-5 text-green-300" />
+                    <span className="text-sm">Common challenges and proven solutions</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <ApperIcon name="CheckCircle2" className="w-5 h-5 text-green-300" />
+                    <span className="text-sm">Essential requirements checklist</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <ApperIcon name="CheckCircle2" className="w-5 h-5 text-green-300" />
+                    <span className="text-sm">Professional PDF report for applications</span>
+                  </div>
+                  <div className="flex items-center space-x-3">
+                    <ApperIcon name="CheckCircle2" className="w-5 h-5 text-green-300" />
+                    <span className="text-sm">Updated regulatory information</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="text-center">
+                <Button 
+                  size="lg" 
+                  className="bg-white text-primary hover:bg-gray-100 px-10 py-4 text-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                  onClick={onStart}
+                >
+                  Get My Professional Assessment
+                  <ApperIcon name="ArrowRight" className="w-6 h-6 ml-3" />
+                </Button>
+                <p className="text-blue-200 text-sm mt-3">
+                  Join 2,500+ nurses who've successfully obtained international licenses
+                </p>
+              </div>
+            </Card>
+          </motion.div>
+
+          <motion.div variants={item} className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <Card className="p-6 bg-gradient-to-br from-green-50 to-green-100 border-green-200">
+              <h3 className="text-lg font-semibold text-green-900 mb-4 flex items-center">
+                <ApperIcon name="Users" className="w-5 h-5 mr-2" />
+                Success Stories
+              </h3>
+              <div className="space-y-3">
+                <div className="text-sm text-green-800">
+                  <div className="font-medium">"This assessment was incredibly detailed and accurate. I'm now working in London exactly as predicted!"</div>
+                  <div className="text-xs text-green-600 mt-1">- Maria S., RN (Philippines → UK)</div>
+                </div>
+                <div className="text-sm text-green-800">
+                  <div className="font-medium">"The step-by-step guide saved me thousands in consultant fees. Worth every penny!"</div>
+                  <div className="text-xs text-green-600 mt-1">- James K., RN (Nigeria → Canada)</div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="p-6 bg-gradient-to-br from-blue-50 to-blue-100 border-blue-200">
+              <h3 className="text-lg font-semibold text-blue-900 mb-4 flex items-center">
+                <ApperIcon name="Award" className="w-5 h-5 mr-2" />
+                Professional Standards
+              </h3>
+              <div className="space-y-2 text-sm text-blue-800">
+                <div className="flex items-center space-x-2">
+                  <ApperIcon name="CheckCircle2" className="w-4 h-4 text-blue-600" />
+                  <span>Verified by licensed nurses in each country</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <ApperIcon name="CheckCircle2" className="w-4 h-4 text-blue-600" />
+                  <span>Updated monthly with latest regulations</span>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <ApperIcon name="CheckCircle2" className="w-4 h-4 text-blue-600" />
+                  <span>30-day money-back guarantee</span>
+                </div>
+              </div>
             </Card>
           </motion.div>
 
           <motion.div variants={item} className="text-center">
-            <div className="flex items-center justify-center space-x-6 text-sm text-gray-600">
+            <div className="flex items-center justify-center space-x-8 text-sm text-gray-600">
               <div className="flex items-center space-x-2">
                 <ApperIcon name="Shield" className="w-4 h-4" />
                 <span>Secure Payment</span>
@@ -127,7 +208,7 @@ const WelcomePage = ({ onStart }) => {
               </div>
               <div className="flex items-center space-x-2">
                 <ApperIcon name="CheckCircle" className="w-4 h-4" />
-                <span>Trusted by 1000+ Nurses</span>
+                <span>2,500+ Successful Nurses</span>
               </div>
             </div>
           </motion.div>

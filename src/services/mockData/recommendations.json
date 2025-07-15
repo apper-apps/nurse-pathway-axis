@@ -12,7 +12,49 @@
     "timeline": "4-8 months",
     "averageCost": 2500,
     "difficulty": "Medium",
-    "jobMarket": "High demand, especially in NHS"
+    "jobMarket": "High demand, especially in NHS",
+    "implementationSteps": [
+      {
+        "title": "English Language Test",
+        "description": "Take IELTS Academic test achieving 7.0 overall with minimum 6.5 in each section",
+        "timeframe": "1-2 months",
+        "cost": 250
+      },
+      {
+        "title": "Document Verification",
+        "description": "Get nursing qualification and license verified by NMC approved verification agency",
+        "timeframe": "2-4 weeks",
+        "cost": 400
+      },
+      {
+        "title": "NMC Application",
+        "description": "Submit online application to Nursing and Midwifery Council with all required documents",
+        "timeframe": "1-2 weeks",
+        "cost": 153
+      },
+      {
+        "title": "Test of Competence",
+        "description": "Complete Computer Based Test (CBT) and Objective Structured Clinical Examination (OSCE)",
+        "timeframe": "2-4 months",
+        "cost": 1500
+      },
+      {
+        "title": "Registration",
+        "description": "Final NMC registration upon successful completion of all requirements",
+        "timeframe": "2-4 weeks",
+        "cost": 197
+      }
+    ],
+    "challenges": [
+      {
+        "issue": "Long OSCE waiting times",
+        "solution": "Book OSCE slots as early as possible, consider multiple test centers"
+      },
+      {
+        "issue": "Document verification delays",
+        "solution": "Use NMC-approved agencies and submit documents well in advance"
+      }
+    ]
   },
   "Australia": {
     "country": "Australia",
@@ -27,7 +69,49 @@
     "timeline": "6-12 months",
     "averageCost": 3200,
     "difficulty": "High",
-    "jobMarket": "Excellent opportunities nationwide"
+    "jobMarket": "Excellent opportunities nationwide",
+    "implementationSteps": [
+      {
+        "title": "English Language Test",
+        "description": "Achieve IELTS 7.0 in all four components or equivalent OET scores",
+        "timeframe": "1-3 months",
+        "cost": 380
+      },
+      {
+        "title": "Skills Assessment",
+        "description": "Apply to ANMAC for nursing qualification assessment and evidence portfolio",
+        "timeframe": "3-6 months",
+        "cost": 1200
+      },
+      {
+        "title": "Document Preparation",
+        "description": "Prepare comprehensive evidence portfolio including work experience and references",
+        "timeframe": "1-2 months",
+        "cost": 500
+      },
+      {
+        "title": "AHPRA Registration",
+        "description": "Apply for nursing registration with Australian Health Practitioner Regulation Agency",
+        "timeframe": "2-3 months",
+        "cost": 920
+      },
+      {
+        "title": "Final Assessment",
+        "description": "Complete any additional requirements or bridging programs if needed",
+        "timeframe": "0-6 months",
+        "cost": 200
+      }
+    ],
+    "challenges": [
+      {
+        "issue": "Strict English requirements",
+        "solution": "Consider OET as alternative to IELTS, practice extensively before testing"
+      },
+      {
+        "issue": "Complex evidence portfolio",
+        "solution": "Use professional migration agents familiar with ANMAC requirements"
+      }
+    ]
   },
   "NewZealand": {
     "country": "New Zealand",
@@ -42,7 +126,49 @@
     "timeline": "3-6 months",
     "averageCost": 2000,
     "difficulty": "Low",
-    "jobMarket": "Growing demand, especially in rural areas"
+    "jobMarket": "Growing demand, especially in rural areas",
+    "implementationSteps": [
+      {
+        "title": "English Language Test",
+        "description": "Take IELTS Academic achieving 7.0 overall with minimum 6.5 in each section",
+        "timeframe": "1-2 months",
+        "cost": 385
+      },
+      {
+        "title": "NCNZ Application",
+        "description": "Submit application to Nursing Council of New Zealand with academic transcripts",
+        "timeframe": "2-4 weeks",
+        "cost": 200
+      },
+      {
+        "title": "Competency Assessment",
+        "description": "Complete CAP assessment including written examination and practical assessment",
+        "timeframe": "1-3 months",
+        "cost": 1200
+      },
+      {
+        "title": "Police Checks",
+        "description": "Obtain police clearance from all countries lived in for 12+ months",
+        "timeframe": "2-6 weeks",
+        "cost": 150
+      },
+      {
+        "title": "Registration",
+        "description": "Final registration with practicing certificate upon successful completion",
+        "timeframe": "2-4 weeks",
+        "cost": 65
+      }
+    ],
+    "challenges": [
+      {
+        "issue": "Limited CAP test dates",
+        "solution": "Register for CAP as soon as eligible, plan around available test dates"
+      },
+      {
+        "issue": "International police checks",
+        "solution": "Start police check process early, use apostille services for authentication"
+      }
+    ]
   },
   "Canada": {
     "country": "Canada",
@@ -57,7 +183,49 @@
     "timeline": "6-10 months",
     "averageCost": 2800,
     "difficulty": "Medium",
-    "jobMarket": "High demand across all provinces"
+    "jobMarket": "High demand across all provinces",
+    "implementationSteps": [
+      {
+        "title": "English Language Test",
+        "description": "Take IELTS General or Academic achieving required provincial minimums",
+        "timeframe": "1-2 months",
+        "cost": 320
+      },
+      {
+        "title": "Credential Assessment",
+        "description": "Get nursing education assessed by provincial regulatory body",
+        "timeframe": "2-4 months",
+        "cost": 600
+      },
+      {
+        "title": "NCLEX-RN Preparation",
+        "description": "Study for and pass the NCLEX-RN examination",
+        "timeframe": "2-4 months",
+        "cost": 1200
+      },
+      {
+        "title": "Provincial Application",
+        "description": "Apply to specific provincial nursing regulatory body",
+        "timeframe": "1-2 months",
+        "cost": 500
+      },
+      {
+        "title": "Final Registration",
+        "description": "Complete any additional provincial requirements and obtain license",
+        "timeframe": "1-2 months",
+        "cost": 180
+      }
+    ],
+    "challenges": [
+      {
+        "issue": "Provincial variations",
+        "solution": "Research specific provincial requirements early, choose province strategically"
+      },
+      {
+        "issue": "NCLEX-RN difficulty",
+        "solution": "Use comprehensive study materials, consider prep courses, practice extensively"
+      }
+    ]
   },
   "USA": {
     "country": "United States",
@@ -72,6 +240,48 @@
     "timeline": "8-14 months",
     "averageCost": 3500,
     "difficulty": "High",
-    "jobMarket": "Excellent opportunities with competitive salaries"
+    "jobMarket": "Excellent opportunities with competitive salaries",
+    "implementationSteps": [
+      {
+        "title": "English Language Test",
+        "description": "Take TOEFL iBT (83+) or IELTS (6.5+) depending on state requirements",
+        "timeframe": "1-2 months",
+        "cost": 260
+      },
+      {
+        "title": "CGFNS Evaluation",
+        "description": "Complete credentials evaluation through CGFNS or equivalent approved agency",
+        "timeframe": "3-6 months",
+        "cost": 400
+      },
+      {
+        "title": "State Application",
+        "description": "Apply to state board of nursing for eligibility to take NCLEX-RN",
+        "timeframe": "2-4 months",
+        "cost": 200
+      },
+      {
+        "title": "NCLEX-RN Examination",
+        "description": "Study for and pass the NCLEX-RN examination",
+        "timeframe": "2-4 months",
+        "cost": 1500
+      },
+      {
+        "title": "Visa Process",
+        "description": "Complete immigration process including VisaScreen certificate",
+        "timeframe": "3-12 months",
+        "cost": 1140
+      }
+    ],
+    "challenges": [
+      {
+        "issue": "Complex immigration process",
+        "solution": "Work with immigration attorney, start visa process early"
+      },
+      {
+        "issue": "State-specific requirements",
+        "solution": "Research target state requirements thoroughly, consider multiple state options"
+      }
+    ]
   }
 }
