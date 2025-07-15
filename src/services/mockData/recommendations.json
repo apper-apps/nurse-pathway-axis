@@ -1,0 +1,77 @@
+{
+  "UK": {
+    "country": "United Kingdom",
+    "region": "England, Scotland, Wales, Northern Ireland",
+    "requirements": [
+      "IELTS overall 7.0 (minimum 6.5 in each section)",
+      "Nursing degree equivalent to UK Bachelor's",
+      "Valid home country nursing license",
+      "Character and health declarations",
+      "OSCE (Objective Structured Clinical Examination)"
+    ],
+    "timeline": "4-8 months",
+    "averageCost": 2500,
+    "difficulty": "Medium",
+    "jobMarket": "High demand, especially in NHS"
+  },
+  "Australia": {
+    "country": "Australia",
+    "region": "All states and territories",
+    "requirements": [
+      "IELTS overall 7.0 (minimum 7.0 in each section)",
+      "Bachelor's degree in nursing or equivalent",
+      "Valid home country nursing license",
+      "Skills assessment by ANMAC",
+      "English proficiency evidence"
+    ],
+    "timeline": "6-12 months",
+    "averageCost": 3200,
+    "difficulty": "High",
+    "jobMarket": "Excellent opportunities nationwide"
+  },
+  "NewZealand": {
+    "country": "New Zealand",
+    "region": "North and South Islands",
+    "requirements": [
+      "IELTS overall 7.0 (minimum 6.5 in each section)",
+      "Bachelor's degree in nursing",
+      "Valid home country nursing license",
+      "Competency Assessment Programme (CAP)",
+      "Character and fitness declarations"
+    ],
+    "timeline": "3-6 months",
+    "averageCost": 2000,
+    "difficulty": "Low",
+    "jobMarket": "Growing demand, especially in rural areas"
+  },
+  "Canada": {
+    "country": "Canada",
+    "region": "Provincial licensing varies",
+    "requirements": [
+      "IELTS overall 7.0 (minimum 6.0 in each section)",
+      "Educational Credential Assessment (ECA)",
+      "Valid home country nursing license",
+      "NCLEX-RN examination",
+      "Provincial registration requirements"
+    ],
+    "timeline": "6-10 months",
+    "averageCost": 2800,
+    "difficulty": "Medium",
+    "jobMarket": "High demand across all provinces"
+  },
+  "USA": {
+    "country": "United States",
+    "region": "State-specific licensing",
+    "requirements": [
+      "TOEFL iBT 83+ or IELTS 6.5+",
+      "CGFNS credentials evaluation",
+      "Valid home country nursing license",
+      "NCLEX-RN examination",
+      "State board of nursing approval"
+    ],
+    "timeline": "8-14 months",
+    "averageCost": 3500,
+    "difficulty": "High",
+    "jobMarket": "Excellent opportunities with competitive salaries"
+  }
+}

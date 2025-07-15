@@ -1,0 +1,131 @@
+{
+  "start": {
+    "question": "Which country or region did you complete your nursing education?",
+    "type": "select",
+    "options": [
+      "Philippines",
+      "India",
+      "UK",
+      "Canada",
+      "USA",
+      "Other"
+    ],
+    "next": "english_language"
+  },
+  "english_language": {
+    "question": "Was your nursing education taught in English?",
+    "type": "boolean",
+    "next": {
+      "yes": "english_test_taken",
+      "no": "ask_english_test"
+    }
+  },
+  "english_test_taken": {
+    "question": "Have you already taken an English proficiency test?",
+    "type": "boolean",
+    "next": {
+      "yes": "test_score_input",
+      "no": "ask_which_test"
+    }
+  },
+  "ask_which_test": {
+    "question": "Which English test do you plan to take?",
+    "type": "select",
+    "options": [
+      "IELTS",
+      "OET",
+      "TOEFL",
+      "PTE"
+    ],
+    "next": "test_score_input"
+  },
+  "ask_english_test": {
+    "question": "Which English test are you planning to take?",
+    "type": "select",
+    "options": [
+      "IELTS",
+      "OET",
+      "TOEFL",
+      "PTE"
+    ],
+    "next": "test_score_input"
+  },
+  "test_score_input": {
+    "question": "Enter your expected scores for each section.",
+    "type": "form",
+    "fields": {
+      "Reading": "number",
+      "Writing": "number",
+      "Speaking": "number",
+      "Listening": "number"
+    },
+    "next": "education_level"
+  },
+  "education_level": {
+    "question": "What is the highest nursing qualification you have completed?",
+    "type": "select",
+    "options": [
+      "Diploma",
+      "Bachelor's Degree",
+      "Master's Degree",
+      "Doctorate"
+    ],
+    "next": "license_status"
+  },
+  "license_status": {
+    "question": "Do you currently hold a valid RN license in your home country?",
+    "type": "boolean",
+    "next": {
+      "yes": "practice_experience",
+      "no": "practice_experience"
+    }
+  },
+  "practice_experience": {
+    "question": "How many years of RN practice experience do you have?",
+    "type": "select",
+    "options": [
+      "None",
+      "<1 year",
+      "1–3 years",
+      "4+ years"
+    ],
+    "next": "recency_of_practice"
+  },
+  "recency_of_practice": {
+    "question": "Have you practiced nursing within the last 4 years?",
+    "type": "boolean",
+    "next": {
+      "yes": "country_preferences",
+      "no": "country_preferences"
+    }
+  },
+  "country_preferences": {
+    "question": "Do you have any preferred countries or regions?",
+    "type": "select",
+    "options": [
+      "UK",
+      "Australia",
+      "New Zealand",
+      "Canada",
+      "USA",
+      "No preference"
+    ],
+    "next": "priority_preferences"
+  },
+  "priority_preferences": {
+    "question": "What is most important to you in choosing a pathway?",
+    "type": "select",
+    "options": [
+      "Fastest timeline",
+      "Lowest cost",
+      "Easiest requirements",
+      "Best job opportunities",
+      "No preference"
+    ],
+    "next": "results"
+  },
+  "results": {
+    "question": "Based on your responses, we will now recommend the most suitable country and pathway.",
+    "type": "final"
+  }
+}
