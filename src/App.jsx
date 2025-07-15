@@ -151,29 +151,6 @@ navigate('/dashboard');
     }
   };
 
-  const renderCurrentStep = () => {
-    switch (currentStep) {
-      case "welcome":
-        return <WelcomePage onStart={handleStart} />;
-      case "assessment":
-        return <AssessmentPage onComplete={handleAssessmentComplete} />;
-      case "payment":
-        return (
-          <PaymentPage 
-            onPaymentSuccess={handlePaymentSuccess}
-            onBack={handleBackToAssessment}
-          />
-        );
-      case "report":
-        return (
-          <ReportPage 
-            userProfile={userProfile}
-            onStartOver={handleStartOver}
-          />
-        );
-      default:
-        return <WelcomePage onStart={handleStart} />;
-    }
 const renderMainApp = () => {
     return (
       <Routes>
@@ -210,25 +187,30 @@ const renderMainApp = () => {
       </Routes>
     );
   };
-return (
-      <div className="relative">
-        {/* Only show logout button on authenticated routes */}
-        {isAuthenticated && (
-          <div className="absolute top-4 right-4 z-50">
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={authMethods.logout}
-              className="flex items-center space-x-2"
-            >
-              <ApperIcon name="LogOut" size={16} />
-              <span>Logout</span>
-            </Button>
-          </div>
-        )}
-        {renderMainApp()}
-      </div>
-    );
+
+  const renderCurrentStep = () => {
+    switch (currentStep) {
+      case "welcome":
+        return <WelcomePage onStart={handleStart} />;
+      case "assessment":
+        return <AssessmentPage onComplete={handleAssessmentComplete} />;
+      case "payment":
+        return (
+          <PaymentPage 
+            onPaymentSuccess={handlePaymentSuccess}
+            onBack={handleBackToAssessment}
+          />
+        );
+      case "report":
+        return (
+          <ReportPage 
+            userProfile={userProfile}
+            onStartOver={handleStartOver}
+          />
+        );
+      default:
+        return <WelcomePage onStart={handleStart} />;
+    }
   };
   
   // Don't render routes until initialization is complete
