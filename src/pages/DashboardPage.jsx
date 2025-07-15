@@ -29,7 +29,7 @@ const DashboardPage = () => {
     loadUserReports();
   }, []);
 
-  const loadUserReports = async () => {
+const loadUserReports = async () => {
     try {
       setLoading(true);
       setError(null);

@@ -22,7 +22,7 @@ const AssessmentPage = ({ onComplete }) => {
     answerQuestion(answer);
     
     if (currentQuestion?.type === "final") {
-      onComplete(getUserProfile());
+onComplete(getUserProfile());
     }
   };
 

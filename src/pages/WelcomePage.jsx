@@ -210,7 +210,7 @@ return (
                 <Button 
                   size="lg" 
                   className="bg-white text-primary hover:bg-gray-100 px-12 py-5 text-xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 mb-4"
-                  onClick={onStart}
+onClick={onStart}
                 >
                   Get My Personal Report Now
                   <ApperIcon name="ArrowRight" className="w-6 h-6 ml-3" />
@@ -325,7 +325,7 @@ return (
               <Button 
                 size="lg" 
                 className="bg-white text-primary hover:bg-gray-100 px-16 py-6 text-2xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 mb-4"
-                onClick={onStart}
+onClick={onStart}
               >
                 Start My Assessment Now
                 <ApperIcon name="ArrowRight" className="w-8 h-8 ml-4" />

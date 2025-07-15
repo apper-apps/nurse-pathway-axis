@@ -73,9 +73,9 @@ function AppContent() {
               navigate(currentPath);
             } else {
 navigate('/dashboard');
-            }
-          } else {
-navigate('/dashboard');
+          }
+        } else {
+          navigate('/dashboard');
           }
           // Store user information in Redux
           dispatch(setUser(JSON.parse(JSON.stringify(user))));
@@ -155,10 +155,9 @@ const renderMainApp = () => {
     return (
       <Routes>
         {/* Public routes - no authentication required */}
-        <Route path="/" element={renderCurrentStep()} />
-        <Route path="/welcome" element={<WelcomePage onStart={handleStart} />} />
-        <Route path="/assessment" element={<AssessmentPage onComplete={handleAssessmentComplete} />} />
-        <Route path="/payment" element={<PaymentPage onPaymentSuccess={handlePaymentSuccess} onBack={handleBackToAssessment} />} />
+{/* Public routes */}
+        <Route path="/" element={<WelcomePage onStart={() => navigate('/login')} />} />
+        <Route path="/welcome" element={<WelcomePage onStart={() => navigate('/login')} />} />
         
         {/* Authentication routes */}
         <Route path="/login" element={<Login />} />
@@ -172,12 +171,16 @@ const renderMainApp = () => {
         {isAuthenticated ? (
           <>
             <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/assessment" element={<AssessmentPage onComplete={handleAssessmentComplete} />} />
+            <Route path="/payment" element={<PaymentPage onPaymentSuccess={handlePaymentSuccess} onBack={handleBackToAssessment} />} />
             <Route path="/purchase" element={<PurchaseSelectionPage />} />
             <Route path="/report/:reportId?" element={<ReportPage userProfile={userProfile} onStartOver={handleStartOver} />} />
           </>
         ) : (
           <>
             <Route path="/dashboard" element={<Login />} />
+            <Route path="/assessment" element={<Login />} />
+            <Route path="/payment" element={<Login />} />
             <Route path="/purchase" element={<Login />} />
             <Route path="/report/:reportId?" element={<Login />} />
           </>
