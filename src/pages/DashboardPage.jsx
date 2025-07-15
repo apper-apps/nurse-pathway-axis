@@ -66,8 +66,8 @@ const loadUserReports = async () => {
     navigate(`/report/${reportId}`);
   };
 
-  const handleStartNewAssessment = () => {
-    navigate('/');
+const handleStartNewAssessment = () => {
+    navigate('/assessment');
   };
 
   if (loading) {
@@ -173,13 +173,13 @@ const loadUserReports = async () => {
                   <ApperIcon name="ShoppingCart" size={16} />
                   <span>Purchase Regional Report</span>
                 </Button>
-                <Button
+<Button
                   onClick={handleStartNewAssessment}
                   variant="outline"
                   className="w-full flex items-center justify-center space-x-2"
                 >
                   <ApperIcon name="RefreshCw" size={16} />
-                  <span>New Assessment</span>
+                  <span>Start Assessment</span>
                 </Button>
               </div>
             </Card>
