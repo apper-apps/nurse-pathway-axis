@@ -23,10 +23,10 @@ export const processPayment = async (paymentData) => {
     const apperClient = getApperClient();
     const transactionId = "TXN" + Math.random().toString(36).substr(2, 9).toUpperCase();
     
-    const paymentRecord = {
+const paymentRecord = {
       Name: `Payment_${transactionId}`,
       transaction_id: transactionId,
-      amount: 9.00,
+      amount: paymentData.amount || 9.00,
       currency1: "USD",
       timestamp: new Date().toISOString()
     };
@@ -56,12 +56,13 @@ export const processPayment = async (paymentData) => {
       
       const successfulRecord = response.results.find(result => result.success);
       if (successfulRecord) {
-        return {
+return {
           success: true,
           transactionId: transactionId,
-          amount: 9.00,
+          amount: paymentData.amount || 9.00,
           currency: "USD",
-          timestamp: new Date().toISOString()
+          timestamp: new Date().toISOString(),
+          regions: paymentData.regions || []
         };
       }
     }

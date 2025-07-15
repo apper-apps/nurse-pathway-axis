@@ -1,26 +1,26 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import Header from "@/components/organisms/Header";
+import { useParams } from "react-router-dom";
 import RecommendationReport from "@/components/organisms/RecommendationReport";
-import Loading from "@/components/ui/Loading";
+import Header from "@/components/organisms/Header";
 import Error from "@/components/ui/Error";
+import Loading from "@/components/ui/Loading";
 import { generateRecommendations } from "@/services/api/recommendationService";
 
 const ReportPage = ({ userProfile, onStartOver }) => {
+  const { reportId } = useParams();
   const [recommendations, setRecommendations] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
-    loadRecommendations();
-  }, [userProfile]);
-
-  const loadRecommendations = async () => {
+const loadRecommendations = async () => {
     try {
       setLoading(true);
       setError(null);
       
-      const results = await generateRecommendations(userProfile);
+      // If reportId is provided, load specific region data
+      const specificRegion = reportId ? parseReportId(reportId) : null;
+      const results = await generateRecommendations(userProfile, specificRegion);
       setRecommendations(results);
       
       toast.success("Your personalized recommendations are ready!");
@@ -32,6 +32,27 @@ const ReportPage = ({ userProfile, onStartOver }) => {
     }
   };
 
+  useEffect(() => {
+    loadRecommendations();
+  }, [userProfile]);
+
+  const parseReportId = (reportId) => {
+    // Parse reportId to determine region type and value
+    // This is a simplified example - in production, you'd have a proper mapping
+    const regionMap = {
+      'uk': { type: 'country', value: 'UK' },
+      'australia': { type: 'country', value: 'Australia' },
+      'newzealand': { type: 'country', value: 'New Zealand' },
+      'alberta': { type: 'province', value: 'Alberta' },
+      'bc': { type: 'province', value: 'British Columbia' },
+      'ontario': { type: 'province', value: 'Ontario' },
+      'california': { type: 'state', value: 'California' },
+      'texas': { type: 'state', value: 'Texas' },
+      'newyork': { type: 'state', value: 'New York' }
+    };
+    
+    return regionMap[reportId] || null;
+  };
   if (loading) {
     return (
       <div className="min-h-screen bg-gradient-to-br from-surface via-white to-blue-50">

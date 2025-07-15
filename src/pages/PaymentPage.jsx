@@ -6,7 +6,7 @@ import Loading from "@/components/ui/Loading";
 import Error from "@/components/ui/Error";
 import { processPayment } from "@/services/api/paymentService";
 
-const PaymentPage = ({ onPaymentSuccess, onBack }) => {
+const PaymentPage = ({ onPaymentSuccess, onBack, paymentAmount = 9.00 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -15,7 +15,7 @@ const PaymentPage = ({ onPaymentSuccess, onBack }) => {
       setLoading(true);
       setError(null);
       
-      const result = await processPayment(paymentData);
+const result = await processPayment({ ...paymentData, amount: paymentAmount });
       
       if (result.success) {
         toast.success("Payment successful! Generating your report...");

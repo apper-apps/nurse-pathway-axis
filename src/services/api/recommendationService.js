@@ -9,14 +9,14 @@ const getApperClient = () => {
   });
 };
 
-export const generateRecommendations = async (userProfile) => {
+export const generateRecommendations = async (userProfile, specificRegion = null) => {
   try {
     // First, create or update user profile
     const userProfileId = await createUserProfile(userProfile);
     
     // Then get recommendations
     const apperClient = getApperClient();
-    const params = {
+const params = {
       fields: [
         { field: { Name: "country" } },
         { field: { Name: "region" } },
@@ -25,11 +25,25 @@ export const generateRecommendations = async (userProfile) => {
         { field: { Name: "timeline" } },
         { field: { Name: "total_cost" } },
         { field: { Name: "difficulty" } },
-        { field: { Name: "job_market" } }
+        { field: { Name: "job_market" } },
+        { field: { Name: "province" } },
+        { field: { Name: "state" } }
       ],
       orderBy: [{ fieldName: "score", sorttype: "DESC" }],
-      pagingInfo: { limit: 5, offset: 0 }
+      pagingInfo: { limit: specificRegion ? 1 : 5, offset: 0 }
     };
+    
+    // Add region-specific filtering if specified
+    if (specificRegion) {
+      params.where = [
+        {
+          FieldName: specificRegion.type === 'country' ? 'country' : 
+                    specificRegion.type === 'province' ? 'province' : 'state',
+          Operator: "EqualTo",
+          Values: [specificRegion.value]
+        }
+      ];
+    }
     
     const response = await apperClient.fetchRecords("recommendation", params);
     
@@ -44,7 +58,9 @@ export const generateRecommendations = async (userProfile) => {
       const personalizedScore = calculateScore(userProfile, rec);
       return {
         country: rec.country,
-        region: rec.region,
+region: rec.region,
+        province: rec.province,
+        state: rec.state,
         score: Math.round(personalizedScore),
         requirements: rec.requirements ? rec.requirements.split('\n').filter(req => req.trim()) : [],
         timeline: rec.timeline,
@@ -56,9 +72,9 @@ export const generateRecommendations = async (userProfile) => {
       };
     });
     
-    // Sort by personalized score and return top 5
-    return recommendations.sort((a, b) => b.score - a.score).slice(0, 5);
-    
+// Sort by personalized score and return appropriate number
+    const sortedRecommendations = recommendations.sort((a, b) => b.score - a.score);
+    return specificRegion ? sortedRecommendations : sortedRecommendations.slice(0, 5);
   } catch (error) {
     console.error("Error generating recommendations:", error);
     toast.error("Failed to generate recommendations");

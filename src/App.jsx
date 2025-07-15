@@ -8,6 +8,8 @@ import WelcomePage from "@/pages/WelcomePage";
 import AssessmentPage from "@/pages/AssessmentPage";
 import PaymentPage from "@/pages/PaymentPage";
 import ReportPage from "@/pages/ReportPage";
+import DashboardPage from "@/pages/DashboardPage";
+import PurchaseSelectionPage from "@/pages/PurchaseSelectionPage";
 import Login from '@/pages/Login';
 import Signup from '@/pages/Signup';
 import Callback from '@/pages/Callback';
@@ -70,10 +72,10 @@ function AppContent() {
             if (!currentPath.includes('/login') && !currentPath.includes('/signup')) {
               navigate(currentPath);
             } else {
-              navigate('/');
+navigate('/dashboard');
             }
           } else {
-            navigate('/');
+navigate('/dashboard');
           }
           // Store user information in Redux
           dispatch(setUser(JSON.parse(JSON.stringify(user))));
@@ -189,7 +191,7 @@ function AppContent() {
       );
     }
 
-    return (
+return (
       <div className="relative">
         <div className="absolute top-4 right-4 z-50">
           <Button
@@ -204,6 +206,9 @@ function AppContent() {
         </div>
         <Routes>
           <Route path="/" element={renderCurrentStep()} />
+          <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/purchase" element={<PurchaseSelectionPage />} />
+          <Route path="/report/:reportId?" element={<ReportPage userProfile={userProfile} onStartOver={handleStartOver} />} />
           <Route path="*" element={<div>{renderCurrentStep()}</div>} />
         </Routes>
       </div>
