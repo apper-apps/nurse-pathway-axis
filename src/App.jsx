@@ -174,43 +174,59 @@ navigate('/dashboard');
       default:
         return <WelcomePage onStart={handleStart} />;
     }
+const renderMainApp = () => {
+    return (
+      <Routes>
+        {/* Public routes - no authentication required */}
+        <Route path="/" element={renderCurrentStep()} />
+        <Route path="/welcome" element={<WelcomePage onStart={handleStart} />} />
+        <Route path="/assessment" element={<AssessmentPage onComplete={handleAssessmentComplete} />} />
+        <Route path="/payment" element={<PaymentPage onPaymentSuccess={handlePaymentSuccess} onBack={handleBackToAssessment} />} />
+        
+        {/* Authentication routes */}
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/callback" element={<Callback />} />
+        <Route path="/error" element={<ErrorPage />} />
+        <Route path="/prompt-password/:appId/:emailAddress/:provider" element={<PromptPassword />} />
+        <Route path="/reset-password/:appId/:fields" element={<ResetPassword />} />
+        
+        {/* Protected routes - authentication required */}
+        {isAuthenticated ? (
+          <>
+            <Route path="/dashboard" element={<DashboardPage />} />
+            <Route path="/purchase" element={<PurchaseSelectionPage />} />
+            <Route path="/report/:reportId?" element={<ReportPage userProfile={userProfile} onStartOver={handleStartOver} />} />
+          </>
+        ) : (
+          <>
+            <Route path="/dashboard" element={<Login />} />
+            <Route path="/purchase" element={<Login />} />
+            <Route path="/report/:reportId?" element={<Login />} />
+          </>
+        )}
+        
+        <Route path="*" element={renderCurrentStep()} />
+      </Routes>
+    );
   };
-
-  const renderMainApp = () => {
-    if (!isAuthenticated) {
-      return (
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/callback" element={<Callback />} />
-          <Route path="/error" element={<ErrorPage />} />
-          <Route path="/prompt-password/:appId/:emailAddress/:provider" element={<PromptPassword />} />
-          <Route path="/reset-password/:appId/:fields" element={<ResetPassword />} />
-          <Route path="*" element={<Login />} />
-        </Routes>
-      );
-    }
-
 return (
       <div className="relative">
-        <div className="absolute top-4 right-4 z-50">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={authMethods.logout}
-            className="flex items-center space-x-2"
-          >
-            <ApperIcon name="LogOut" size={16} />
-            <span>Logout</span>
-          </Button>
-        </div>
-        <Routes>
-          <Route path="/" element={renderCurrentStep()} />
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/purchase" element={<PurchaseSelectionPage />} />
-          <Route path="/report/:reportId?" element={<ReportPage userProfile={userProfile} onStartOver={handleStartOver} />} />
-          <Route path="*" element={<div>{renderCurrentStep()}</div>} />
-        </Routes>
+        {/* Only show logout button on authenticated routes */}
+        {isAuthenticated && (
+          <div className="absolute top-4 right-4 z-50">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={authMethods.logout}
+              className="flex items-center space-x-2"
+            >
+              <ApperIcon name="LogOut" size={16} />
+              <span>Logout</span>
+            </Button>
+          </div>
+        )}
+        {renderMainApp()}
       </div>
     );
   };
