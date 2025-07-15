@@ -33,9 +33,6 @@ function AppContent() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [isInitialized, setIsInitialized] = useState(false);
-  const [currentStep, setCurrentStep] = useState("welcome");
-  const [userProfile, setUserProfile] = useState(null);
-  const [paymentComplete, setPaymentComplete] = useState(false);
   
   // Get authentication status with proper error handling
   const userState = useSelector((state) => state.user);
@@ -112,29 +109,6 @@ navigate('/dashboard');
     });
   }, [navigate, dispatch]);
 
-  const handleStart = () => {
-    setCurrentStep("assessment");
-  };
-
-  const handleAssessmentComplete = (profile) => {
-    setUserProfile(profile);
-    setCurrentStep("payment");
-  };
-
-  const handlePaymentSuccess = () => {
-    setPaymentComplete(true);
-    setCurrentStep("report");
-  };
-
-  const handleStartOver = () => {
-    setCurrentStep("welcome");
-    setUserProfile(null);
-    setPaymentComplete(false);
-  };
-
-  const handleBackToAssessment = () => {
-    setCurrentStep("assessment");
-  };
 
   // Authentication methods to share via context
   const authMethods = {
@@ -155,7 +129,6 @@ const renderMainApp = () => {
     return (
       <Routes>
         {/* Public routes - no authentication required */}
-{/* Public routes */}
         <Route path="/" element={<WelcomePage onStart={() => navigate('/login')} />} />
         <Route path="/welcome" element={<WelcomePage onStart={() => navigate('/login')} />} />
         
@@ -171,10 +144,10 @@ const renderMainApp = () => {
         {isAuthenticated ? (
           <>
             <Route path="/dashboard" element={<DashboardPage />} />
-            <Route path="/assessment" element={<AssessmentPage onComplete={handleAssessmentComplete} />} />
-            <Route path="/payment" element={<PaymentPage onPaymentSuccess={handlePaymentSuccess} onBack={handleBackToAssessment} />} />
+            <Route path="/assessment" element={<AssessmentPage />} />
+            <Route path="/payment" element={<PaymentPage />} />
             <Route path="/purchase" element={<PurchaseSelectionPage />} />
-            <Route path="/report/:reportId?" element={<ReportPage userProfile={userProfile} onStartOver={handleStartOver} />} />
+            <Route path="/report/:reportId?" element={<ReportPage />} />
           </>
         ) : (
           <>
@@ -186,34 +159,9 @@ const renderMainApp = () => {
           </>
         )}
         
-        <Route path="*" element={renderCurrentStep()} />
+        <Route path="*" element={<WelcomePage onStart={() => navigate('/login')} />} />
       </Routes>
     );
-  };
-
-  const renderCurrentStep = () => {
-    switch (currentStep) {
-      case "welcome":
-        return <WelcomePage onStart={handleStart} />;
-      case "assessment":
-        return <AssessmentPage onComplete={handleAssessmentComplete} />;
-      case "payment":
-        return (
-          <PaymentPage 
-            onPaymentSuccess={handlePaymentSuccess}
-            onBack={handleBackToAssessment}
-          />
-        );
-      case "report":
-        return (
-          <ReportPage 
-            userProfile={userProfile}
-            onStartOver={handleStartOver}
-          />
-        );
-      default:
-        return <WelcomePage onStart={handleStart} />;
-    }
   };
   
   // Don't render routes until initialization is complete
@@ -234,7 +182,7 @@ const renderMainApp = () => {
     );
   }
   
-  return (
+return (
     <AuthContext.Provider value={authMethods}>
       <div className="App">
         {renderMainApp()}

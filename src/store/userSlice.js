@@ -3,8 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
   user: null,
   isAuthenticated: false,
-  purchasedReports: [],
-  currentUserProfile: null
+purchasedReports: [],
+  currentUserProfile: null,
+  paymentStatus: false
 };
 
 export const userSlice = createSlice({
@@ -27,11 +28,17 @@ export const userSlice = createSlice({
     clearCurrentUserProfile: (state) => {
       state.currentUserProfile = null;
     },
-    setPurchasedReports: (state, action) => {
+setPurchasedReports: (state, action) => {
       state.purchasedReports = action.payload;
     },
     addPurchasedReport: (state, action) => {
       state.purchasedReports.push(action.payload);
+    },
+    setPaymentStatus: (state, action) => {
+      state.paymentStatus = action.payload;
+    },
+    clearPaymentStatus: (state) => {
+      state.paymentStatus = false;
     }
   },
 });
@@ -42,7 +49,9 @@ export const {
   setCurrentUserProfile, 
   clearCurrentUserProfile,
   setPurchasedReports,
-  addPurchasedReport 
+  addPurchasedReport,
+  setPaymentStatus,
+  clearPaymentStatus
 } = userSlice.actions;
 
 export default userSlice.reducer;

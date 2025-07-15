@@ -1,5 +1,6 @@
 import { useQuestionFlow } from "@/hooks/useQuestionFlow";
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { setCurrentUserProfile } from '@/store/userSlice';
 import { createUserProfile, updateUserProfile, getUserProfile } from '@/services/api/userProfileService';
 import Header from "@/components/organisms/Header";
@@ -66,15 +67,19 @@ const handleAnswer = async (answer) => {
         
         if (savedProfile) {
           dispatch(setCurrentUserProfile(savedProfile));
-          onComplete(profileData);
         }
+        
+        // Navigate to payment page after assessment completion
+        navigate('/payment');
       } catch (error) {
         console.error("Error saving user profile:", error);
         // Still proceed with assessment completion even if profile save fails
-        onComplete(profileData);
+        navigate('/payment');
       }
     }
   };
+
+  const navigate = useNavigate();
 
 if (loading || profileLoading) {
     return (
