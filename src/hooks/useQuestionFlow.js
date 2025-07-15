@@ -47,9 +47,8 @@ export const useQuestionFlow = () => {
     }
   };
 
-  const answerQuestion = async (answer) => {
+const answerQuestion = async (answer) => {
     try {
-      setLoading(true);
       setError(null);
       
       // Save answer
@@ -72,11 +71,10 @@ export const useQuestionFlow = () => {
       } else {
         // Flow complete
         setCurrentQuestion({ type: "complete" });
+        setCurrentQuestionId(null);
       }
     } catch (err) {
       setError(err.message);
-    } finally {
-      setLoading(false);
     }
   };
 
