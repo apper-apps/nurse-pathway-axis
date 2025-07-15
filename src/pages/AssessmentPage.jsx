@@ -98,23 +98,19 @@ if (loading || profileLoading) {
     );
   }
 
-  return (
+return (
     <div className="min-h-screen bg-gradient-to-br from-surface via-white to-blue-50">
       <Header 
-        currentStep={getCurrentStep()}
-        totalSteps={totalSteps}
-        showProgress={true}
+        currentStep={1}
+        totalSteps={1}
+        showProgress={false}
       />
       
-      <div className="max-w-4xl mx-auto px-4 py-12">
-        {currentQuestion && (
-          <QuestionRenderer
-            question={currentQuestion}
-            onAnswer={handleAnswer}
-            onBack={goBack}
-            canGoBack={canGoBack()}
-          />
-        )}
+      <div className="max-w-6xl mx-auto px-4 py-12">
+        <QuestionRenderer
+          mode="single-page"
+          onAnswer={handleAnswer}
+        />
       </div>
     </div>
   );
